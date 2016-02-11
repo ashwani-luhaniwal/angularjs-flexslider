@@ -1,0 +1,22 @@
+{
+  "name": "angular-flexslider",
+  "version": "1.0.0",
+  "description": "flexslider usage in angular",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "flexslider",
+    "angular",
+    "flexslider",
+    "slider",
+    "carousel"
+  ],
+  "author": "Ashwani K Luhaniwal",
+  "license": "MIT",
+  "devDependencies": {
+    "angular": "^1.5.0",
+    "jquery": "^2.2.0"
+  }
+}

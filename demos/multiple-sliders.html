@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html ng-app="multipleSliders">
+<head>
+	<title>Multiple Sliders - Angular Flexslider Directive</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<!-- adding flexslider css -->
+	<link rel="stylesheet" type="text/css" href="../node_modules/flexslider/flexslider.css">
+	<style type="text/css">
+		/* changing default effect of flexslider class */
+		.flexslider {
+			margin: 0;
+		}
+	</style>
+</head>
+<body ng-controller="multipleSlidersCtrl">
+
+	<div ng-repeat="slideshow in slideShows">
+		<!-- Create flexslider using angular directive -->
+		<flex-slider 
+			slide="slide in slideshow track by $index" 
+			animation="slide">
+			<li>
+				<img ng-src="{{ slide }}">
+			</li>
+		</flex-slider>
+	</div>
+
+	<!-- adding script files -->
+	<script type="text/javascript" src="../node_modules/jquery/dist/jquery.min.js"></script>
+	<script type="text/javascript" src="../node_modules/flexslider/jquery.flexslider.js"></script>
+	<script type="text/javascript" src="../node_modules/angular/angular.min.js"></script>
+	<script type="text/javascript" src="../js/angular-flexslider.js"></script>
+	<script type="text/javascript">
+		var flexsliderApp = angular.module('multipleSliders', ['angular-flexslider']);
+		flexsliderApp.controller('multipleSlidersCtrl', function($scope) {
+			// creating slideshow array of arrays which contains images
+			$scope.slideShows = [
+				[
+					"../images/banner1.jpg",
+					"../images/banner2.jpg",
+					"../images/banner3.jpg",
+					"../images/banner4.jpg",
+					"../images/banner5.jpg"
+				],
+				[
+					"../images/banner1.jpg",
+					"../images/banner2.jpg",
+					"../images/banner3.jpg",
+					"../images/banner4.jpg",
+					"../images/banner5.jpg"
+				]
+			];
+		});
+	</script>
+</body>
+</html>

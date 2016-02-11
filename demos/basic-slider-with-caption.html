@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html ng-app="basicSliderCaption">
+<head>
+	<title>Basic Slider with caption - Angular Flexslider Directive</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<!-- adding flexslider css -->
+	<link rel="stylesheet" type="text/css" href="../node_modules/flexslider/flexslider.css">
+	<style type="text/css">
+		/* changing default effect of flexslider class */
+		.flexslider {
+			margin: 0;
+		}
+		/* For basic slider with custom navigation. */
+		.flex-prev {
+			float: left;
+		}
+		.flex-next {
+			float: right;
+		}
+		/* For basic slider with simple caption */
+		.flex-caption {
+			width: 96%;
+			padding: 30px;
+			bottom: 0;
+			background: rgba(0, 0, 0, 0.1);
+			color: #fff;
+			text-shadow: 0 -1px 0 rgba(0, 0, 0, .3);
+			font-size: 14px;
+			line-height: 18px;
+			position: absolute;
+		}
+	</style>
+</head>
+<body ng-controller="basicSliderCaptionCtrl">
+
+	<!-- Create flexslider using angular directive -->
+	<!-- track by is used to identify slides uniquely -->
+	<flex-slider slide="slide in slides track by slide.id" animation="slide">
+		<li>
+			<img ng-src="{{ slide.img }}">
+			<p class="flex-caption">{{ slide.caption }}</p>
+		</li>
+	</flex-slider>
+
+	<!-- adding script files -->
+	<script type="text/javascript" src="../node_modules/jquery/dist/jquery.min.js"></script>
+	<script type="text/javascript" src="../node_modules/flexslider/jquery.flexslider.js"></script>
+	<script type="text/javascript" src="../node_modules/angular/angular.min.js"></script>
+	<script type="text/javascript" src="../js/angular-flexslider.js"></script>
+	<script type="text/javascript">
+		var flexsliderApp = angular.module('basicSliderCaption', ['angular-flexslider']);
+		flexsliderApp.controller('basicSliderCaptionCtrl', function($scope) {
+			// creating slides array of json objects
+			$scope.slides = [
+				{
+					id: 1,
+					img: "../images/banner1.jpg",
+					caption: "Geeky Banner #1"
+				},
+				{
+					id: 2,
+					img: "../images/banner2.jpg",
+					caption: "Geeky Banner #2"
+				},
+				{
+					id: 3,
+					img: "../images/banner3.jpg",
+					caption: "Geeky Banner #3"
+				},
+				{
+					id: 4,
+					img: "../images/banner4.jpg",
+					caption: "Geeky Banner #4"
+				},
+				{
+					id: 5,
+					img: "../images/banner5.jpg",
+					caption: "Geeky Banner #5"
+				}
+			];
+		});
+	</script>
+</body>
+</html>

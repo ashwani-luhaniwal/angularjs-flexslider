@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html ng-app="basicSlider">
+<head>
+	<title>Basic Slider - Angular Flexslider Directive</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<!-- add flexslider css -->
+	<link rel="stylesheet" type="text/css" href="../node_modules/flexslider/flexslider.css">
+</head>
+<body ng-controller="basicSliderController">
+
+	<!-- Create flexslider using angular directive -->
+	<flex-slider slide="img in images" animation="slide">
+		<li>
+			<img ng-src="{{img}}">
+		</li>
+	</flex-slider>
+
+	<!-- add script files -->
+	<script type="text/javascript" src="../node_modules/jquery/dist/jquery.min.js"></script>
+	<script type="text/javascript" src="../node_modules/flexslider/jquery.flexslider.js"></script>
+	<script type="text/javascript" src="../node_modules/angular/angular.min.js"></script>
+	<script type="text/javascript" src="../js/angular-flexslider.js"></script>
+	<script type="text/javascript">
+		var flexsliderApp = angular.module('basicSlider', ['angular-flexslider']);
+		flexsliderApp.controller('basicSliderController', function($scope) {
+			// adding all images in array
+			$scope.images = [
+				'../images/banner1.jpg',
+				'../images/banner2.jpg',
+				'../images/banner3.jpg',
+				'../images/banner4.jpg',
+				'../images/banner5.jpg'
+			];
+		});
+	</script>
+</body>
+</html>
