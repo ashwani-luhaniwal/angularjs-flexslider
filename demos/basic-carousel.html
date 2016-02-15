@@ -1,7 +1,7 @@
 <!DOCTYPE html>
-<html ng-app="sliderCustomNav">
+<html ng-app="basicCarouselApp">
 <head>
-	<title>Basic Slider with Custom Navigation - Angular Flexslider Directive</title>
+	<title>Basic Carousel - Angular Flexslider Directive</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 	<!-- adding flexslider css -->
@@ -11,31 +11,16 @@
 		.flexslider {
 			margin: 0;
 		}
-		/* For basic slider with custom navigation. */
-		.flex-prev {
-			float: left;
-		}
-		.flex-next {
-			float: right;
-		}
 	</style>
 </head>
-<body ng-controller="sliderCustomNavCtrl">
+<body ng-controller="basicCarouselCtrl">
 
 	<!-- Create flexslider using angular directive -->
-	<!-- Passing all flexslider options as attribute in flexslider element -->
-	<flex-slider slide="slide in slides" animation="slide" controls-container=".custom-controls-container" custom-direction-nav=".custom-navigation a">
+	<flex-slider class="carousel" slide="slide in carouselSlides" animation="slide" animation-loop="false" item-width="210" item-margin="5">
 		<li>
 			<img ng-src="{{ slide }}">
 		</li>
 	</flex-slider>
-
-	<!-- custom navigation buttons -->
-	<div class="custom-navigation">
-		<a href="#" class="flex-prev">Prev</a>
-		<div class="custom-controls-container"></div>
-		<a href="#" class="flex-next">Next</a>
-	</div>
 
 	<!-- adding script files -->
 	<script type="text/javascript" src="../node_modules/jquery/dist/jquery.min.js"></script>
@@ -43,16 +28,17 @@
 	<script type="text/javascript" src="../node_modules/angular/angular.min.js"></script>
 	<script type="text/javascript" src="../js/angular-flexslider.js"></script>
 	<script type="text/javascript">
-		var flexsliderApp = angular.module('sliderCustomNav', ['angular-flexslider']);
-		flexsliderApp.controller('sliderCustomNavCtrl', function($scope) {
+		var flexsliderApp = angular.module('basicCarouselApp', ['angular-flexslider']);
+		flexsliderApp.controller('basicCarouselCtrl', function($scope) {
 			// creating slides array which contains images
-			$scope.slides = [
+			$scope.carouselSlides = [
 				"../images/banner1.jpg",
 				"../images/banner2.jpg",
 				"../images/banner3.jpg",
 				"../images/banner4.jpg",
-				"../images/banner5.jpg",
+				"../images/banner5.jpg"
 			];
+
 		});
 	</script>
 </body>

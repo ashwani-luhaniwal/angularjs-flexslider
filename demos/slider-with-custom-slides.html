@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html ng-app="basicSliderApp">
+<head>
+	<title>Basic Slider with New Custom Slides - Angular Flexslider Directive</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<!-- adding flexslider css -->
+	<link rel="stylesheet" type="text/css" href="../node_modules/flexslider/flexslider.css">
+	<style type="text/css">
+		/* changing default effect of flexslider class */
+		.flexslider {
+			margin: 0;
+		}
+		/* css for buttons */
+		.btn {
+    		display: inline-block;
+    		padding: 6px 12px;
+    		margin-bottom: 0;
+    		font-size: 14px;
+    		font-weight: 400;
+    		line-height: 1.42857143;
+    		text-align: center;
+    		white-space: nowrap;
+    		vertical-align: middle;
+    		-ms-touch-action: manipulation;
+    		touch-action: manipulation;
+    		cursor: pointer;
+    		-webkit-user-select: none;
+    		-moz-user-select: none;
+    		-ms-user-select: none;
+    		user-select: none;
+    		background-image: none;
+    		border: 1px solid transparent;
+    		border-radius: 4px;
+		}
+		.btn-add {
+    		color: #fff;
+    		background-color: #5cb85c;
+    		border-color: #4cae4c;
+		}
+		.btn-remove {
+    		color: #fff;
+    		background-color: #d9534f;
+    		border-color: #d43f3a;
+		}
+	</style>
+</head>
+<body ng-controller="basicSliderCtrl">
+
+	<!-- Create flexslider using angular directive -->
+	<flex-slider id="slider" slide="slide in sliderSlides track by $index" animation="slide">
+		<li>
+			<img ng-src="{{ slide }}">
+		</li>
+	</flex-slider>
+
+	<!-- buttons to add/remove new image in slider -->
+	<button class="btn btn-add" ng-click="addNewSlide()">Add New Slide</button>
+	<button class="btn btn-remove" ng-click="removeNewSlide()">Remove New Slide</button>
+
+	<!-- adding script files -->
+	<script type="text/javascript" src="../node_modules/jquery/dist/jquery.min.js"></script>
+	<script type="text/javascript" src="../node_modules/flexslider/jquery.flexslider.js"></script>
+	<script type="text/javascript" src="../node_modules/angular/angular.min.js"></script>
+	<script type="text/javascript" src="../js/angular-flexslider.js"></script>
+	<script type="text/javascript">
+		var flexsliderApp = angular.module('basicSliderApp', ['angular-flexslider']);
+		flexsliderApp.controller('basicSliderCtrl', function($scope) {
+			// creating slides array which contains images
+			$scope.sliderSlides = [
+				"../images/banner1.jpg",
+				"../images/banner2.jpg",
+				"../images/banner3.jpg",
+				"../images/banner4.jpg",
+				"../images/banner5.jpg"
+			];
+
+			// pushing new image on "Add New Slide" button click
+			$scope.addNewSlide = function() {
+				$scope.sliderSlides.push('../images/banner1.jpg');
+			};
+
+			// removing recently added image on "Remove New Slide" button click
+			$scope.removeNewSlide = function() {
+				$scope.sliderSlides.shift();
+			};
+
+		});
+	</script>
+</body>
+</html>
